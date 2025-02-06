@@ -1,3 +1,3 @@
 # CPSC-362-Fitness-Tracker
 
-We'll build a fitness tracker app that will require login credentials as well as log past workout and meal plans. We'll incorporate a basic nutrition table to count calories that'll require user input to save their meal entries. A prompt that'll require the user to input their physicals will be made and compared to a standard BMI chart to come up with calorie and workout goals. A list of basic workouts will be made available to log workout plans as well.
+We'll build a fitness tracker app that will help users log their workouts. They will input the date and type of workouts they have done for the day. These entries will be saved by date and organized in a list that the user can view. This fitness tracker app aims to help organize workout plans as well as track what workouts have been done for each day. The app's primary goal is to assist users log their workout history with ease as well as help track weight gains and improvements.
