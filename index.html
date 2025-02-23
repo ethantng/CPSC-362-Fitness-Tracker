@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Workout Logger</title>
+    <!-- Link to external CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+
+    <div class="container">
+        <h1>Workout Logger</h1>
+
+        <label>Date (YYYY-MM-DD):
+            <input type="date" id="date">
+        </label>
+
+        <label>Workout Type:
+            <select id="workoutType">
+                <option value="Push-ups">Push-ups</option>
+                <option value="Sit-ups">Sit-ups</option>
+                <option value="Squats">Squats</option>
+                <option value="Jumping Jacks">Jumping Jacks</option>
+            </select>
+        </label>
+
+        <label>Repetitions:
+            <select id="repetitions">
+                <option value="5">5</option>
+                <option value="10">10</option>
+                <option value="15">15</option>
+                <option value="20">20</option>
+            </select>
+        </label>
+
+        <button onclick="addWorkout()">Add Workout</button>
+
+        <h2>Your Workout Log:</h2>
+        <ul id="workoutLog">No workouts logged yet.</ul>
+    </div>
+
+    <!-- Link to external JS -->
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+
+</body>
+</html>
