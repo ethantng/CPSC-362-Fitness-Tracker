@@ -85,3 +85,57 @@ function deleteWorkout(index) {
     .then(() => displayWorkoutLog())
     .catch(error => console.error("Error deleting:", error));
 }
+
+function addWorkout() {
+    const date = document.getElementById('date').value;
+    const workoutType = document.getElementById('workoutType').value;
+    const repetitions = document.getElementById('repetitions').value;
+    const setCount = document.getElementById('setCount').value;
+    const workoutLog = document.getElementById('workoutLog');
+
+    if (!date) {
+        alert("Please select a date.");
+        return;
+    }
+
+    // Create new log entry
+    const listItem = document.createElement('li');
+    listItem.style.display = "flex";
+    listItem.style.justifyContent = "space-between";
+    listItem.style.alignItems = "center";
+    listItem.style.padding = "10px";
+    listItem.style.border = "1px solid #ccc";
+    listItem.style.borderRadius = "5px";
+    listItem.style.margin = "5px 0";
+    listItem.style.background = "#f9f9f9";
+
+    const workoutText = document.createElement('span');
+    workoutText.textContent = `${date} - ${workoutType}: ${repetitions} x ${setCount}`;
+
+    // Remove button (-)
+    const removeBtn = document.createElement('button');
+    removeBtn.textContent = "❌";
+    removeBtn.style.marginRight = "10px";
+    removeBtn.style.background = "red";
+    removeBtn.style.color = "white";
+    removeBtn.style.border = "none";
+    removeBtn.style.padding = "5px 10px";
+    removeBtn.style.cursor = "pointer";
+    removeBtn.style.borderRadius = "5px";
+    removeBtn.onclick = function () {
+        listItem.remove();
+        if (workoutLog.children.length === 0) {
+            workoutLog.innerHTML = "No workouts logged yet.";
+        }
+    };
+
+    // Append elements to list item
+    listItem.appendChild(removeBtn);
+    listItem.appendChild(workoutText);
+
+    // Append to log
+    if (workoutLog.textContent === "No workouts logged yet.") {
+        workoutLog.innerHTML = ''; // Clear placeholder text
+    }
+    workoutLog.appendChild(listItem);
+}
