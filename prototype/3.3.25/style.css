@@ -45,37 +45,13 @@ header {
     background-color: rgba(255, 255, 255, 0.2);
 }
 
-/* Remove default margin & padding */
-body, html {
-    margin: 0;
-    padding: 0;
-}
-
 /* Ensure full-width for the section */
 .page {
     display: none;
     width: 100%;
-    margin: 0;
+    margin: 0 auto;
     padding: 0;
     text-align: center;
-}
-
-/* Fix spacing issue between header and image */
-.home-page {
-    display: block;
-    width: 100%;
-    padding: 0;
-    margin: 0;
-}
-
-/* Ensure the image touches the header */
-.home-page img {
-    display: block;
-    width: 100%;
-    height: auto;
-    margin: 0;
-    padding: 0;
-    border: none;
 }
 
 header, .home-page, .home-page img {
@@ -92,34 +68,47 @@ header, .home-page, .home-page img {
     background-color: white;
     padding: 2rem;
     border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     margin-bottom: 2rem;
+    width: 60%;
+    margin: 0 auto;
+    border: 1px solid #ddd;
 }
 
 .form-row {
     display: flex;
     flex-wrap: wrap;
     gap: 1rem;
-    margin-bottom: 1rem;
+    justify-content: space-between;
 }
 
 .form-group {
     flex: 1;
-    min-width: 150px;
+    min-width: 200px;
+    display: flex;
+    flex-direction: column;
 }
 
 label {
-    display: block;
-    margin-bottom: 0.5rem;
+    font-weight: bold;
     color: #333;
+    margin-bottom: 0.5rem;
 }
 
 input, select {
     width: 100%;
     padding: 0.75rem;
-    border: 1px solid #ddd;
-    border-radius: 4px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
     font-size: 1rem;
+    background-color: #f9f9f9;
+    transition: all 0.3s ease;
+}
+
+input:focus, select:focus {
+    border-color: #4a66f5;
+    outline: none;
+    background-color: white;
 }
 
 .add-btn {
@@ -127,21 +116,27 @@ input, select {
     color: white;
     border: none;
     padding: 0.75rem 1.5rem;
-    border-radius: 4px;
+    border-radius: 6px;
     cursor: pointer;
     font-size: 1rem;
-    transition: background-color 0.3s;
+    transition: background-color 0.3s ease;
+    align-self: center;
+    margin-top: 1.2rem;
 }
 
 .add-btn:hover {
     background-color: #3a56e5;
 }
 
+
 .workout-log {
     background-color: white;
     border-radius: 10px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
     overflow: hidden;
+    width: 60%;
+    margin: 0 auto;
+    padding-bottom: 1rem;
 }
 
 .log-header {
@@ -149,25 +144,33 @@ input, select {
     padding: 1rem 2rem;
     font-weight: bold;
     border-bottom: 1px solid #ddd;
+    text-align: center;
+    font-size: 1.2rem;
+}
+
+#log-items {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 1rem;
 }
 
 .log-item {
-    padding: 1rem 2rem;
-    border-bottom: 1px solid #eee;
+    background-color: #ffffff;
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     display: flex;
     justify-content: space-between;
     align-items: center;
-}
-
-.log-item:last-child {
-    border-bottom: none;
+    border: 1px solid #ddd;
 }
 
 .remove-btn {
     background-color: #ff5a5a;
     color: white;
     border: none;
-    padding: 0.5rem 0.75rem;
+    padding: 0.5rem 1rem;
     border-radius: 4px;
     cursor: pointer;
     font-size: 0.9rem;
@@ -178,20 +181,11 @@ input, select {
     background-color: #e04444;
 }
 
-.home-page, .data-page, .profile-page {
-    text-align: center;
-    padding-top: 2rem;
-}
-
-.home-page h1, .data-page h1, .profile-page h1 {
-    margin-bottom: 2rem;
-    color: #333;
-}
-
 .empty-log {
     text-align: center;
     padding: 2rem;
     color: #777;
+    font-size: 1rem;
 }
 
 .success-message {
