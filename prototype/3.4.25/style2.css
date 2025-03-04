@@ -1,0 +1,350 @@
+/* Reset and Global Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    background-color: #f5f7fa;
+}
+
+/* Header */
+header {
+    display: flex;
+    height: 80px;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 40px;
+    background-color: #000000;
+    color: white;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.nav-links {
+    display: flex;
+    gap: 1.5rem;
+}
+
+.nav-btn {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1rem;
+    cursor: pointer;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+.nav-btn:hover,
+.nav-btn.active {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Sidebar */
+.sidebar {
+    position: fixed;
+    left: 0;
+    top: 80px; /* Adjust to match header height */
+    width: 220px; /* Default expanded width */
+    height: calc(100% - 80px);
+    background-color: #131618;
+    transition: width 0.3s ease;
+    overflow: hidden;
+}
+
+/* Collapsed Sidebar */
+.sidebar.collapsed {
+    width: 60px;
+}
+
+/* Menu Links */
+.sidebar .menu-links {
+    padding: 0;
+}
+
+.sidebar .menu-links li {
+    margin: 15px 0;
+}
+
+/* Buttons inside Sidebar */
+.sidebar .menu-links button {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    padding: 12px;
+    width: 100%;
+    border-radius: 5px;
+    transition: background 0.3s;
+    cursor: pointer;
+    text-align: left;
+}
+
+.sidebar .menu-links button:hover,
+.sidebar .menu-links button.active {
+    background: rgba(255, 255, 255, 0.2);;
+}
+
+/* Sidebar Icons */
+.sidebar .icon {
+    font-size: 20px;
+    margin-right: 10px;
+}
+
+/* Collapsed State Adjustments */
+.sidebar.collapsed .menu-links button {
+    justify-content: center;
+    font-size: 0; /* Hide text */
+    padding: 10px;
+}
+
+.sidebar.collapsed .icon {
+    margin-right: 0;
+    font-size: 20px;
+}
+
+/* Sidebar Toggle Button */
+.toggle-btn {
+    position: absolute;
+    top: 15px;
+    right: -20px;
+    background-color: #1abc9c;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    font-size: 20px;
+    border-radius: 4px;
+}
+
+/* Ensure main content shifts accordingly */
+main {
+    margin-left: 220px;
+    transition: margin-left 0.3s ease, width 0.3s ease;
+    width: calc(100% - 220px);
+}
+
+/* Adjust when sidebar collapses */
+.sidebar.collapsed + main {
+    margin-left: 60px;
+    width: calc(100% - 60px);
+}
+
+
+/* Main Content */
+main {
+    margin-left: 220px; /* Adjust if sidebar collapses */
+    width: calc(100% - 220px);
+    padding-top: 100px; /* Push content below header */
+    transition: margin-left 0.3s ease, width 0.3s ease;
+}
+
+
+.main-content {
+    margin-left: 220px;
+    width: calc(100% - 220px);
+    transition: margin-left 0.3s ease, width 0.3s ease;
+    padding: 100px 20px 20px;  /* Increased padding to push content below header */
+}
+
+.sidebar.collapsed + .main-content {
+    margin-left: 60px;
+    width: calc(100% - 60px);
+}
+
+/* Page Section */
+.page {
+    display: none;
+    width: 100%;
+    padding: 40px;
+    text-align: center;
+}
+
+.page.active {
+    display: block;
+}
+
+/* Home Page */
+.home img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+/* Workout Log */
+.workout-form {
+    background-color: white;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    width: 60%;
+    margin: 0 auto 2rem;
+    border: 1px solid #ddd;
+}
+
+.form-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: space-between;
+}
+
+.form-group {
+    flex: 1;
+    min-width: 200px;
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 0.5rem;
+}
+
+input,
+select {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 1rem;
+    background-color: #f9f9f9;
+    transition: all 0.3s ease;
+}
+
+input:focus,
+select:focus {
+    border-color: #4a66f5;
+    outline: none;
+    background-color: white;
+}
+
+/* Buttons */
+.add-btn {
+    background-color: #4a66f5;
+    color: white;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+    align-self: center;
+    margin-top: 1.2rem;
+}
+
+.add-btn:hover {
+    background-color: #3a56e5;
+}
+
+/* Workout Log */
+.workout-log {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    width: 60%;
+    margin: 0 auto;
+    padding-bottom: 1rem;
+}
+
+.log-header {
+    background-color: #f0f2f5;
+    padding: 1rem;
+    font-weight: bold;
+    text-align: center;
+    font-size: 1.2rem;
+    border-bottom: 1px solid #ddd;
+}
+
+#log-items {
+    padding: 1rem;
+}
+
+.log-item {
+    background-color: #ffffff;
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid #ddd;
+}
+
+/* Success Message */
+.success-message {
+    background-color: #4CAF50;
+    color: white;
+    padding: 0.5rem;
+    border-radius: 4px;
+    margin-bottom: 1rem;
+    text-align: center;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.success-message.show {
+    opacity: 1;
+}
+
+/* Remove Button */
+.remove-btn {
+    background-color: #ff5a5a;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: background-color 0.3s;
+}
+
+.remove-btn:hover {
+    background-color: #e04444;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .sidebar {
+        width: 180px;
+    }
+    
+    .main-content {
+        margin-left: 180px;
+        width: calc(100% - 180px);
+    }
+}
+
+@media (max-width: 500px) {
+    .sidebar {
+        width: 100%;
+        height: auto;
+        position: relative;
+    }
+    
+    .main-content {
+        margin-left: 0;
+        width: 100%;
+        padding: 20px;
+    }
+}
