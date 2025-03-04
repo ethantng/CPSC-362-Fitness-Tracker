@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fitness Tracker</title>
+    <!-- Link to external CSS -->
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -17,15 +18,17 @@
         </div>
     </header>
 
-    <!-- Home Section -->
-    <section id="home" class="page active">
-        <img src="./assets/group_run.webp">
-        <h1>Welcome to Your Fitness Tracker</h1>
-        <p>Track your workouts and monitor your progress</p>
-    </section>
+    <div id="home" class="page home-page active">
+        <img src="group_run.webp" class="home-image">
+        <div class="home-content">
+            <h1>Welcome to Your Fitness Tracker</h1>
+            <p>Track your workouts and monitor your progress</p>
+        </div>
+        <h1>Text</h1>
+        <p>Sample text</p>
+    </div>
 
-    <!-- Workout Log Section -->
-    <section id="workout-log" class="page">
+    <div id="workout-log" class="page">
         <div class="workout-form">
             <div id="success-message" class="success-message">Workout added successfully!</div>
             <div class="form-row">
@@ -69,10 +72,9 @@
                 <div class="empty-log">No workouts logged yet. Add your first workout above!</div>
             </div>
         </div>
-    </section>
+    </div>
 
-    <!-- Data Section -->
-    <section id="data" class="page">
+    <div id="data" class="page data-page">
         <h1>Workout Data</h1>
         <div id="calendar-container">
             <!-- Calendar visualization will be generated here -->
@@ -83,14 +85,14 @@
                 <!-- Workout details will be listed here -->
             </ul>
         </div>
-    </section>
+    </div>
 
-    <!-- Profile Section -->
-    <section id="profile" class="page">
+    <div id="profile" class="page profile-page">
         <h1>User Profile</h1>
-        <p>Your profile information will appear here.</p>
-    </section>
+        <p>Your profile information will appear here</p>
+    </div>
 
+    <!-- Link to external JS -->
     <script src="app.js"></script>
 </body>
 </html>

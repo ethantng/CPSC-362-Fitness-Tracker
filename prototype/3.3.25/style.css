@@ -11,12 +11,12 @@ body {
 
 header {
     display: flex;
-    height: 80px;
     justify-content: space-between;
     align-items: center;
-    padding: 0 40px;
+    padding: 1rem 2rem;
     background-color: #000000;
     color: white;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 .logo {
@@ -45,98 +45,95 @@ header {
     background-color: rgba(255, 255, 255, 0.2);
 }
 
-/* Ensure full-width for the section */
 .page {
     display: none;
-    width: 100%;
+    padding: 2rem;
+    max-width: 800px;
     margin: 0 auto;
-    padding: 0;
-    text-align: center;
-}
-
-header, .home-page, .home-page img {
-    margin: 0 !important;
-    padding: 0 !important;
-    border: none !important;
 }
 
 .page.active {
     display: block;
 }
 
+.home-page {
+    padding: 0;
+    max-width: 100%;
+    text-align: center;
+    position: relative;
+}
+.home-image {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+}
+.home-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 2rem;
+    border-radius: 10px;
+    width: 80%;
+    max-width: 600px;
+}
+
 .workout-form {
     background-color: white;
     padding: 2rem;
     border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
     margin-bottom: 2rem;
-    width: 60%;
-    margin: 0 auto;
-    border: 1px solid #ddd;
 }
 
 .form-row {
     display: flex;
     flex-wrap: wrap;
     gap: 1rem;
-    justify-content: space-between;
+    margin-bottom: 1rem;
 }
 
 .form-group {
     flex: 1;
-    min-width: 200px;
-    display: flex;
-    flex-direction: column;
+    min-width: 150px;
 }
 
 label {
-    font-weight: bold;
-    color: #333;
+    display: block;
     margin-bottom: 0.5rem;
+    color: #333;
 }
 
 input, select {
     width: 100%;
     padding: 0.75rem;
-    border: 1px solid #ccc;
-    border-radius: 6px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
     font-size: 1rem;
-    background-color: #f9f9f9;
-    transition: all 0.3s ease;
-}
-
-input:focus, select:focus {
-    border-color: #4a66f5;
-    outline: none;
-    background-color: white;
 }
 
 .add-btn {
-    background-color: #4a66f5;
+    background-color: #008000;
     color: white;
     border: none;
     padding: 0.75rem 1.5rem;
-    border-radius: 6px;
+    border-radius: 4px;
     cursor: pointer;
     font-size: 1rem;
-    transition: background-color 0.3s ease;
-    align-self: center;
-    margin-top: 1.2rem;
+    transition: background-color 0.3s;
 }
 
 .add-btn:hover {
     background-color: #3a56e5;
 }
 
-
 .workout-log {
     background-color: white;
     border-radius: 10px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
     overflow: hidden;
-    width: 60%;
-    margin: 0 auto;
-    padding-bottom: 1rem;
 }
 
 .log-header {
@@ -144,33 +141,25 @@ input:focus, select:focus {
     padding: 1rem 2rem;
     font-weight: bold;
     border-bottom: 1px solid #ddd;
-    text-align: center;
-    font-size: 1.2rem;
-}
-
-#log-items {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-    padding: 1rem;
 }
 
 .log-item {
-    background-color: #ffffff;
-    padding: 1rem;
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    padding: 1rem 2rem;
+    border-bottom: 1px solid #eee;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border: 1px solid #ddd;
+}
+
+.log-item:last-child {
+    border-bottom: none;
 }
 
 .remove-btn {
     background-color: #ff5a5a;
     color: white;
     border: none;
-    padding: 0.5rem 1rem;
+    padding: 0.5rem 0.75rem;
     border-radius: 4px;
     cursor: pointer;
     font-size: 0.9rem;
@@ -181,11 +170,20 @@ input:focus, select:focus {
     background-color: #e04444;
 }
 
+.home-page, .data-page, .profile-page {
+    text-align: center;
+    padding-top: 2rem;
+}
+
+.home-page h1, .data-page h1, .profile-page h1 {
+    margin-bottom: 2rem;
+    color: #333;
+}
+
 .empty-log {
     text-align: center;
     padding: 2rem;
     color: #777;
-    font-size: 1rem;
 }
 
 .success-message {
@@ -204,132 +202,4 @@ input:focus, select:focus {
 }
 
 /* Calendar visualization styles */
-/*
-.month-container {
-    background-color: white;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
-    padding: 1.5rem;
-    margin-bottom: 2rem;
-}
 
-.month-title {
-    font-size: 1.2rem;
-    font-weight: bold;
-    margin-bottom: 1rem;
-    text-align: left;
-}
-
-.days-grid {
-    display: grid;
-    grid-template-columns: repeat(7, 1fr);
-    gap: 0.5rem;
-}
-
-.day-cell {
-    aspect-ratio: 1;
-    border-radius: 10px;
-    background-color: #f0f2f5;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    font-size: 0.9rem;
-    cursor: pointer;
-    transition: transform 0.2s, box-shadow 0.2s;
-}
-
-.day-cell:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.day-cell.has-workout {
-    background-color: #e0e7ff;
-    border: 2px solid #4a66f5;
-}
-
-.day-cell.has-workout.intensity-1 {
-    background-color: #e0e7ff;
-}
-
-.day-cell.has-workout.intensity-2 {
-    background-color: #c7d2fe;
-}
-
-.day-cell.has-workout.intensity-3 {
-    background-color: #a5b4fc;
-}
-
-.day-cell.has-workout.intensity-4 {
-    background-color: #818cf8;
-    color: white;
-}
-
-.day-cell.has-workout.intensity-5 {
-    background-color: #4a66f5;
-    color: white;
-}
-
-.day-number {
-    font-weight: bold;
-}
-
-.workout-count {
-    font-size: 0.75rem;
-    margin-top: 0.25rem;
-}
-
-.calendar-legend {
-    display: flex;
-    justify-content: center;
-    gap: 1rem;
-    margin-top: 1rem;
-    flex-wrap: wrap;
-}
-
-.legend-item {
-    display: flex;
-    align-items: center;
-    font-size: 0.8rem;
-}
-
-.legend-color {
-    width: 1rem;
-    height: 1rem;
-    border-radius: 4px;
-    margin-right: 0.5rem;
-}
-
-.no-data-message {
-    color: #777;
-    margin: 2rem 0;
-}
-
-.workout-details {
-    display: none;
-    background-color: white;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
-    padding: 1.5rem;
-    margin-top: 1.5rem;
-}
-
-.workout-details h3 {
-    margin-bottom: 1rem;
-    color: #333;
-}
-
-.workout-details-list {
-    list-style: none;
-}
-
-.workout-details-list li {
-    padding: 0.5rem 0;
-    border-bottom: 1px solid #eee;
-}
-
-.workout-details-list li:last-child {
-    border-bottom: none;
-}
-    */
