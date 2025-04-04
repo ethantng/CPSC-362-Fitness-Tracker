@@ -2,8 +2,17 @@ document.addEventListener('DOMContentLoaded', function() {
     // Initialize date input with current date if it exists
     const dateInput = document.getElementById('date');
     if (dateInput) {
-        const today = new Date().toISOString().split('T')[0];
-        dateInput.value = today;
+        /*const today = new Date().toISOString().split('T')[0];
+        dateInput.value = today;*/
+        const today = new Date();
+        
+        // Apply timezone offset to ensure we get the correct local date
+        const userTimezoneOffset = today.getTimezoneOffset() * 60000;
+        const localDate = new Date(today.getTime() - userTimezoneOffset);
+        
+        // Format as YYYY-MM-DD for the input field
+        const localDateString = localDate.toISOString().split('T')[0];
+        dateInput.value = localDateString;
     }
     
     // Determine current page from URL
@@ -73,8 +82,9 @@ document.addEventListener('DOMContentLoaded', function() {
     let workouts = JSON.parse(localStorage.getItem('workouts')) || [];
     
     function formatDate(dateString) {
+        const date = new Date(dateString + 'T12:00:00');
         const options = { year: 'numeric', month: 'short', day: 'numeric' };
-        return new Date(dateString).toLocaleDateString('en-US', options);
+        return date.toLocaleDateString('en-US', options);
     }
     
     function formatMonthYear(date) {
@@ -149,9 +159,15 @@ document.addEventListener('DOMContentLoaded', function() {
                 alert('Please fill in all fields');
                 return;
             }
+
+            const inputDate = new Date(dateInput.value + 'T12:00:00'); // Add noon time to avoid date shift
+            const year = inputDate.getFullYear();
+            const month = String(inputDate.getMonth() + 1).padStart(2, '0');
+            const day = String(inputDate.getDate()).padStart(2, '0');
+            const normalizedDateStr = `${year}-${month}-${day}`;
             
             workouts.push({
-                date,
+                date: normalizedDateStr,
                 workoutType,
                 repetitions,
                 sets
