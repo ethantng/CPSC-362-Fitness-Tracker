@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fitness Tracker</title>
+    <!-- Link to external CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="logo" id="logo">
+            <img src="logo_high_res.jpg" alt="Fitness Tracker Logo">
+        </div>   
+        <div class="nav-links">
+            <a href="#home" class="nav-btn">Home</a>
+            <a href="#about" class="nav-btn">About</a>
+            <a href="#mission" class="nav-btn">Our Mission</a>
+            <button class="nav-btn" data-page="profile">Profile</button>
+        </div>
+    </header>
+
+    <nav class="sidebar">
+        <button id="toggleSidebar" class="toggle-btn">☰</button>
+        <ul class="menu-links">
+            <li><button class="nav-btn active" data-page="home">Home</button></li>
+            <li><button class="nav-btn" data-page="workout-log">Workout Log</button></li>
+            <li><button class="nav-btn" data-page="data">Data</button></li>
+            <li><button class="nav-btn" data-page="profile">Profile</button></li>
+        </ul>
+    </nav>
+
+    <div id="home" class="home-page active">
+        <div class="home-content">
+            <div class="motivational-quote">
+                <p>"Motivation gets you started, habit keeps you going."</p>
+            </div>
+            <div class="under-quote">Track your workout seamlessly</div>
+        </div>
+    </div>
+
+    <div id="about" class="about-page">
+        <div class="content-section">
+            <h1>About Us</h1>
+            <p>Welcome to Fitness Tracker! We're a team of fitness enthusiasts and developers committed to helping people reach their health goals through intuitive and powerful tracking tools.</p>
+        </div>
+    </div>
+
+    <div id="mission" class="mission-page">
+        <div class="content-section">
+            <h1>Our Mission</h1>
+            <p>Our mission is to empower everyone to live healthier lives by providing a reliable, easy-to-use platform for tracking fitness progress, setting goals, and staying motivated every step of the way.</p>
+        </div>
+    </div>
+
+    <!-- Link to external JS -->
+    <script src="app.js"></script>
+</body>
+</html>
