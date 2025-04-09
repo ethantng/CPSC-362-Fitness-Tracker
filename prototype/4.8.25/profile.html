@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile - Fitness Tracker</title>
+    <!-- Link to external CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="logo" id="logo">
+            <img src="logo_high_res.jpg" alt="Fitness Tracker Logo">
+        </div>   
+        <div class="nav-links">
+            <button class="nav-btn" data-page="home">Home</button>
+            <button class="nav-btn" data-page="workout-log">Workout Log</button>
+            <button class="nav-btn" data-page="data">Data</button>
+            <button class="nav-btn active" data-page="profile">Profile</button>
+        </div>
+    </header>
+
+    <nav class="sidebar">
+        <button id="toggleSidebar" class="toggle-btn">☰</button>
+        <ul class="menu-links">
+            <li><button class="nav-btn" data-page="home">Home</button></li>
+            <li><button class="nav-btn" data-page="workout-log">Workout Log</button></li>
+            <li><button class="nav-btn" data-page="data">Data</button></li>
+            <li><button class="nav-btn active" data-page="profile">Profile</button></li>
+            <li><a href="index.html#about-us" class="sidebar-link">About Us</a></li>
+            <li><a href="index.html#our-mission" class="sidebar-link">Our Mission</a></li>
+        </ul>
+    </nav>
+
+    <div id="profile" class="page profile-page active">
+        <h1>User Profile</h1>
+        <p>Your profile information will appear here</p>
+    </div>
+
+    <!-- Link to external JS -->
+    <script src="app.js"></script>
+</body>
+</html>
