@@ -170,14 +170,180 @@ document.addEventListener('DOMContentLoaded', function() {
         }, 2000);
     }
     
-    // Calendar visualization functionality (placeholder)
-    function renderCalendar() {
-        if (!calendarContainer) return; // Not on data page
+    // Calendar visualization functionality
+    function getMonthsFromWorkouts() {
+        const monthsSet = new Set();
         
-        // Calendar rendering logic would go here
-        calendarContainer.innerHTML = '<p>Calendar visualization coming soon</p>';
+        workouts.forEach(workout => {
+            const date = new Date(workout.date);
+            const monthYear = `${date.getFullYear()}-${date.getMonth()}`;
+            monthsSet.add(monthYear);
+        });
+        
+        const months = Array.from(monthsSet).map(monthYear => {
+            const [year, month] = monthYear.split('-').map(Number);
+            return new Date(year, month, 1);
+        });
+        
+        // Sort months in descending order (newest first)
+        months.sort((a, b) => b - a);
+        
+        return months;
     }
     
+    function getWorkoutsForDate(dateString) {
+        return workouts.filter(workout => workout.date === dateString);
+    }
+    
+    function countWorkoutsForDate(dateString) {
+        return getWorkoutsForDate(dateString).length;
+    }
+    
+    function getIntensityLevel(count) {
+        if (count === 0) return 0;
+        if (count === 1) return 1;
+        if (count === 2) return 2;
+        if (count === 3) return 3;
+        if (count === 4) return 4;
+        return 5;
+    }
+    
+    function showWorkoutDetails(date, dateFormatted) {
+        const workoutsForDate = getWorkoutsForDate(date);
+        
+        if (workoutsForDate.length === 0) {
+            workoutDetails.style.display = 'none';
+            return;
+        }
+        
+        selectedDateElement.textContent = dateFormatted;
+        workoutDetailsList.innerHTML = '';
+        
+        workoutsForDate.forEach(workout => {
+            const li = document.createElement('li');
+            li.textContent = `${workout.workoutType}: ${workout.repetitions} x ${workout.sets}`;
+            workoutDetailsList.appendChild(li);
+        });
+        
+        workoutDetails.style.display = 'block';
+    }
+    
+    function renderCalendar() {
+        if (!calendarContainer) return;
+    
+        if (workouts.length === 0) {
+            calendarContainer.innerHTML = '<p class="no-data-message">No workout data available. Add workouts to see your activity calendar.</p>';
+            workoutDetails.style.display = 'none';
+            return;
+        }
+        
+        const months = getMonthsFromWorkouts();
+        calendarContainer.innerHTML = '';
+        
+        // Add legend
+        const legendHTML = `
+            <div class="calendar-legend">
+                <div class="legend-item">
+                    <div class="legend-color" style="background-color: #e0e7ff;"></div>
+                    <span>1 workout</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color" style="background-color: #c7d2fe;"></div>
+                    <span>2 workouts</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color" style="background-color: #a5b4fc;"></div>
+                    <span>3 workouts</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color" style="background-color: #818cf8;"></div>
+                    <span>4 workouts</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color" style="background-color: #4a66f5;"></div>
+                    <span>5+ workouts</span>
+                </div>
+            </div>
+        `;
+        
+        months.forEach(month => {
+            const monthContainer = document.createElement('div');
+            monthContainer.className = 'month-container';
+            
+            const monthTitle = document.createElement('div');
+            monthTitle.className = 'month-title';
+            monthTitle.textContent = formatMonthYear(month);
+            
+            const calendarGrid = document.createElement('div');
+            calendarGrid.className = 'calendar-grid';
+            
+            // Add day labels (Sunday to Saturday)
+            const dayLabels = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+            dayLabels.forEach(day => {
+                const dayLabel = document.createElement('div');
+                dayLabel.className = 'day-label';
+                dayLabel.textContent = day;
+                calendarGrid.appendChild(dayLabel);
+            });
+            
+            // Calculate the first day of the month (0 = Sunday, 1 = Monday, etc.)
+            const year = month.getFullYear();
+            const monthIndex = month.getMonth();
+            const firstDay = new Date(year, monthIndex, 1).getDay();
+            const daysInMonth = new Date(year, monthIndex + 1, 0).getDate();
+            
+            // Add empty cells for days before the first day of the month
+            for (let i = 0; i < firstDay; i++) {
+                const emptyCell = document.createElement('div');
+                emptyCell.className = 'day-cell empty';
+                calendarGrid.appendChild(emptyCell);
+            }
+            
+            // Create cells for each day in the month
+            for (let day = 1; day <= daysInMonth; day++) {
+                const date = new Date(year, monthIndex, day);
+                const dateString = date.toISOString().split('T')[0];
+                const workoutCount = countWorkoutsForDate(dateString);
+                const intensity = getIntensityLevel(workoutCount);
+                
+                const dayCell = document.createElement('div');
+                dayCell.className = `day-cell ${workoutCount > 0 ? 'has-workout intensity-' + intensity : ''}`;
+                dayCell.innerHTML = `
+                    <div class="day-number">${day}</div>
+                    ${workoutCount > 0 ? `<div class="workout-count">${workoutCount}</div>` : ''}
+                `;
+                
+                // Add click event to show workout details
+                dayCell.addEventListener('click', () => {
+                    const dateFormatted = formatDate(dateString);
+                    showWorkoutDetails(dateString, dateFormatted);
+                });
+                
+                calendarGrid.appendChild(dayCell);
+            }
+            
+            // Add empty cells to complete the grid (to ensure we have complete weeks)
+            const totalCells = firstDay + daysInMonth;
+            const rowsNeeded = Math.ceil(totalCells / 7);
+            const totalCellsNeeded = rowsNeeded * 7;
+            const emptyCellsToAdd = totalCellsNeeded - totalCells;
+            
+            for (let i = 0; i < emptyCellsToAdd; i++) {
+                const emptyCell = document.createElement('div');
+                emptyCell.className = 'day-cell empty';
+                calendarGrid.appendChild(emptyCell);
+            }
+            
+            monthContainer.appendChild(monthTitle);
+            monthContainer.appendChild(calendarGrid);
+            calendarContainer.appendChild(monthContainer);
+        });
+        
+        calendarContainer.innerHTML += legendHTML;
+    }
+    
+
+
     // Initialize workout form functionality if on workout-log page
     if (addWorkoutBtn) {
         addWorkoutBtn.addEventListener('click', function() {
