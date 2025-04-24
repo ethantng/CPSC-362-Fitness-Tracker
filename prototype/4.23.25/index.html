@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fitness Tracker</title>
+    <!-- Link to external CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="logo" id="logo">
+            <img src="logo_high_res.jpg" alt="Fitness Tracker Logo">
+        </div>   
+        <div class="nav-links">
+            <button class="nav-btn" data-page="home">Home</button>
+            <button class="nav-btn" data-page="workout-log">Workout Log</button>
+            <button class="nav-btn" data-page="data">Data</button>
+            <button class="nav-btn active" data-page="profile">Profile</button>
+        </div>
+    </header>
+
+    <nav class="sidebar">
+        <button id="toggleSidebar" class="toggle-btn">☰</button>
+        <ul class="menu-links">
+            <li><button class="nav-btn active" data-page="home">Home</button></li>
+            <li><button class="nav-btn" data-page="workout-log">Workout Log</button></li>
+            <li><button class="nav-btn" data-page="data">Data</button></li>
+            <li><button class="nav-btn" data-page="profile">Profile</button></li>
+            <li><a href="index.html#about-us" class="sidebar-link">About Us</a></li>
+            <li><a href="index.html#our-mission" class="sidebar-link">Our Mission</a></li>
+        </ul>
+    </nav>
+
+    <div id="home" class="home-page active">
+        <div class="home-content">
+            <div class="motivational-quote">
+                <p>"Motivation gets you started, habit keeps you going."</p>
+            </div>
+            <div class="under-quote">Track your workout seamlessly</div>
+        </div>
+    </div>
+
+    <div class="section-wrapper">
+        <div class="content-section" id="about-us">
+            <h2>About Us</h2>
+            <p>Welcome to our Fitness Tracker – your digital partner for a more organized and consistent workout journey. We’ve created this app with one simple goal in mind: to make logging your workouts effortless and intuitive. Whether you're lifting weights, doing yoga, running, or just getting in a quick stretch, our app allows you to record your activities by date and type, and view them in a clear, calendar-based format.
+                Every entry you make contributes to your personal activity calendar, which dynamically updates and darkens based on how active you’ve been each day. It's a simple, visual way to stay motivated and see your hard work build up over time. Our platform is built to support everyone – from fitness beginners to seasoned athletes – by giving you a better way to reflect, plan, and grow.</p>
+        </div>
+        
+        <div class="content-section" id="our-mission">
+            <h2>Our Mission</h2>
+            <p>Our mission is to empower individuals to take control of their fitness journey by making workout tracking simple, effective, and visually rewarding. We believe that small, consistent steps are the foundation of lasting progress, and our app is here to help you stay on track every step of the way.
+                We aim to eliminate the hassle of remembering workouts or juggling notes and spreadsheets. With our tracker, your workout history is organized, accessible, and easy to review at any time. By combining structure with a clean, motivating interface, we’re here to support your growth, celebrate your dedication, and help turn your fitness goals into a lasting lifestyle.</p>
+        </div>
+    </div>
+    <!-- Link to external JS -->
+    <script src="app.js"></script>
+</body>
+</html>
