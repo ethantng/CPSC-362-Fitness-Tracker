@@ -8,11 +8,31 @@ We'll build a fitness tracker app that will help users log their workouts. They 
 - CSS
 - JavaScript
 
-# Screenshots
-
 # Features
-- Add a new workout
-- Add exercises
-- Add repetitions and weight
-- Delete workout entries
-- Navigate between data pages to view entries
+- Log new workouts with custom details
+- Add exercises, repetitions, and weight
+- Delete workout entries as needed
+- Navigate between pages to view and manage logged data
+- Visualize workout frequency through an interactive activity calendar
+
+# Running the Application Locally
+To run the project on your local machine:
+1. Download the project folder or clone the repository.
+2. Place the folder into a working directory.
+3. Open the project folder using your preferred IDE such as Visual Studio Code.
+4. Launch the index.html file:
+  - Ensure that your IDE supports extensions such as the Live Server extension in VS Code.
+  - Right-click on index.html and select "Open with live Server".
+
+# Flask Backend Installation (Optional)
+If you want to use the backend features:
+1. pip install flask
+2. Navigate to project folder and run:
+   - export FLASK_APP=app.py
+   - set FLAKS_APP=app.py
+   - flask run
+  
+# Future Improvements
+- Implement user authentication through logins and signups.
+- Adding social features such as sharing workouts.
+- Add an export page that will export entries into an organized document.
