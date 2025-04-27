@@ -22,7 +22,7 @@ To run the project on your local machine:
 3. Open the project folder using your preferred IDE such as Visual Studio Code.
 4. Launch the index.html file:
    - Ensure that your IDE supports extensions such as the Live Server extension in VS Code.
-   - Right-click on index.html and select "Open with live Server".
+   - Right-click on index.html and select "Open with Live Server".
 
 # Flask Backend Installation (Optional)
 If you want to use the backend features:
