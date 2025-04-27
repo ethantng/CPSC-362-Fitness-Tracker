@@ -29,10 +29,12 @@ If you want to use the backend features:
 1. pip install flask
 2. Navigate to project folder and run:
    - export FLASK_APP=app.py
-   - set FLAKS_APP=app.py
+   - set FLASK_APP=app.py
    - flask run
   
 # Future Improvements
 - Implement user authentication through logins and signups.
 - Adding social features such as sharing workouts.
 - Add an export page that will export entries into an organized document.
+- Make the activity calendar more interactive.
+- Organize the entries through pages.
